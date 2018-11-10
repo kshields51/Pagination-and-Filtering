@@ -7,15 +7,14 @@ function appendLinks (list) {
   const numberOfButtons = Math.floor(allProfiles.length/10) + 1;
   const div = document.createElement('div');
   div.className = 'pagination';
-  mainDiv.appendChild(div);  //where would this go
+  mainDiv.appendChild(div);
   const ul = document.createElement('ul')
-  div.appendChild(ul)//may need if statement bc how does comp know which div to append to
+  div.appendChild(ul)
   for (var i = 0; i<numberOfButtons; i+=1) {
     const buttonNumber = i + 1;
 
     function createLi (buttonNumber) {
       const linkButtonText = buttonNumber
-      console.log('im running')
       function createElement(elementName, elementAttribute) {//active will be added later
         const element = document.createElement(elementName);
         element[elementAttribute] = "#"
@@ -31,18 +30,29 @@ function appendLinks (list) {
       const li = document.createElement('li')
       appendToLi('a', 'href');
       return(li);
-
     }
-
-
-
-    
-    
     const li = createLi(buttonNumber);
     ul.appendChild(li);
-
 }
-
-  
 }
 appendLinks(listProfiles);
+
+function showPage (list, page) {
+  for (var i = 0; i<=list.length; i+=1) {
+    if (i >= (page * 10 - 10) && i < (page * 10)) {
+      list[i].style.display == '';
+
+    } else if (typeof list[i] !== 'undefined') {
+      list[i].style.display = 'none';
+    } else {
+      break;
+    }
+      
+    
+
+
+  }
+
+
+}
+showPage(listProfiles, 5)
